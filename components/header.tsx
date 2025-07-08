@@ -1,14 +1,16 @@
-"use client"
+"use client";
+import Image from "next/image";
+import logo from "../public/logo.png";
 
-import { useState } from "react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, Monitor } from "lucide-react"
-import { motion } from "framer-motion"
+import { useState } from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Menu, Monitor } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function Header() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   const navigation = [
     { name: "Home", href: "/" },
@@ -17,7 +19,7 @@ export function Header() {
     { name: "Courses", href: "/courses" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
-  ]
+  ];
 
   return (
     <motion.header
@@ -31,15 +33,19 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <motion.div
-              className="h-8 w-8 sm:h-10 sm:w-10 bg-blue-600 rounded-xl flex items-center justify-center"
+              className="h-8 w-8 sm:h-10 sm:w-10 rounded-xl flex items-center justify-center"
               whileHover={{ scale: 1.1, rotate: 5 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <Monitor className="h-4 w-4 sm:h-6 sm:w-6 text-white" />
+              <Image src={logo} alt="logo image" />
             </motion.div>
             <div className="flex flex-col">
-              <span className="font-bold text-lg sm:text-xl text-blue-600">Inland Computers</span>
-              <span className="text-xs text-gray-500 -mt-1 hidden sm:block">Computer Services</span>
+              <span className="font-bold text-lg sm:text-xl text-blue-600">
+                Inland Computers
+              </span>
+              <span className="text-xs text-gray-500 -mt-1 hidden sm:block">
+                Institute of Technology
+              </span>
             </div>
           </Link>
 
@@ -93,5 +99,5 @@ export function Header() {
         </div>
       </div>
     </motion.header>
-  )
+  );
 }
