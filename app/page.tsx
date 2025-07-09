@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Description } from "@radix-ui/react-dialog";
+import data from "./data.json";
 
 export default function HomePage() {
   const stats = [
@@ -507,7 +508,7 @@ export default function HomePage() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {courses.map((course, index) => (
+            {data?.courses.slice(0, 3).map((course, index) => (
               <motion.div
                 key={course.id}
                 initial={{ opacity: 0, y: 30 }}

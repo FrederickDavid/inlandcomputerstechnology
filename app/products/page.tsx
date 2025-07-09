@@ -1,31 +1,54 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Star, MessageCircle, Monitor, Keyboard, Mouse, HardDrive, Cpu, MemoryStick } from "lucide-react"
-import { motion } from "framer-motion"
-import { useState } from "react"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  Star,
+  MessageCircle,
+  Monitor,
+  Keyboard,
+  Mouse,
+  HardDrive,
+  Cpu,
+  MemoryStick,
+} from "lucide-react";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { Description } from "@radix-ui/react-toast";
+import Image from "next/image";
+import data from "../data.json";
 
 export default function ProductsPage() {
-  const [selectedCategory, setSelectedCategory] = useState("All Products")
+  const [selectedCategory, setSelectedCategory] = useState("All Products");
 
-  const categories = ["All Products", "Monitors", "Keyboards", "Mice", "Storage", "Memory", "Processors"]
+  const categories = [
+    "All Products",
+    "Monitors",
+    "Keyboards",
+    "Mice",
+    "Storage",
+    "Memory",
+    "Processors",
+  ];
+
+  console.log(data.products);
 
   const products = [
     {
       id: 1,
-      name: "Gaming Mechanical Keyboard",
-      price: "₦129,000",
-      originalPrice: "₦159,000",
-      rating: 4.8,
-      reviews: 245,
+      name: "Keyboard",
+      description: "",
       image: "/placeholder.svg?height=300&width=300",
       category: "Keyboards",
       icon: Keyboard,
       features: ["RGB Backlit", "Cherry MX Switches", "Anti-Ghosting", "USB-C"],
-      inStock: true,
-      badge: "Best Seller",
     },
     {
       id: 2,
@@ -97,10 +120,14 @@ export default function ProductsPage() {
       inStock: true,
       badge: "Best Seller",
     },
-  ]
+  ];
 
   const filteredProducts =
-    selectedCategory === "All Products" ? products : products.filter((product) => product.category === selectedCategory)
+    selectedCategory === "All Products"
+      ? data.products
+      : data.products.filter(
+          (product) => product.category === selectedCategory
+        );
 
   return (
     <div className="min-h-screen">
@@ -112,14 +139,17 @@ export default function ProductsPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <Badge className="mb-4 bg-white/20 text-white border-white/20">Computer Accessories</Badge>
+            <Badge className="mb-4 bg-white/20 text-white border-white/20">
+              Computer Accessories
+            </Badge>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
               Premium Computer
               <span className="block text-cyan-300">Accessories & Parts</span>
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-blue-100 mb-6 sm:mb-8 px-4 sm:px-0">
-              High-quality computer accessories, components, and peripherals. Everything you need to upgrade and enhance
-              your computing experience.
+              High-quality computer accessories, components, and peripherals.
+              Everything you need to upgrade and enhance your computing
+              experience.
             </p>
           </motion.div>
         </div>
@@ -130,11 +160,21 @@ export default function ProductsPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
             {categories.map((category) => (
-              <motion.div key={category} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <motion.div
+                key={category}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <Button
-                  variant={selectedCategory === category ? "default" : "outline"}
+                  variant={
+                    selectedCategory === category ? "default" : "outline"
+                  }
                   onClick={() => setSelectedCategory(category)}
-                  className={selectedCategory === category ? "bg-blue-600 text-white" : ""}
+                  className={
+                    selectedCategory === category
+                      ? "bg-blue-600 text-white"
+                      : ""
+                  }
                 >
                   {category}
                 </Button>
@@ -153,15 +193,18 @@ export default function ProductsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Featured Products</h2>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              Featured Products
+            </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Discover our carefully selected range of computer accessories and components.
+              Discover our carefully selected range of computer accessories and
+              components.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {filteredProducts.map((product, index) => {
-              const IconComponent = product.icon
+              // const IconComponent = product.icon;
               return (
                 <motion.div
                   key={product.id}
@@ -173,63 +216,50 @@ export default function ProductsPage() {
                   <Card className="h-full shadow-lg hover:shadow-2xl transition-all duration-300 border-0 overflow-hidden">
                     <div className="relative">
                       <div className="h-48 bg-gray-100 flex items-center justify-center">
-                        <div className="w-32 h-32 bg-gray-300 rounded-lg flex items-center justify-center">
-                          <IconComponent className="w-16 h-16 text-gray-500" />
+                        {" "}
+                        <div className="w-52 h-52  rounded-lg flex items-center justify-center">
+                          <Image
+                            src={product.image}
+                            width={170}
+                            height={170}
+                            alt="product images"
+                          />
                         </div>
                       </div>
-                      {!product.inStock && (
-                        <div className="absolute top-2 right-2">
-                          <Badge variant="destructive">Out of Stock</Badge>
-                        </div>
-                      )}
-                      {product.badge === "Best Seller" && (
-                        <div className="absolute top-2 left-2">
-                          <Badge className="bg-red-500 text-white">{product.badge}</Badge>
-                        </div>
-                      )}
                     </div>
-
                     <CardHeader>
                       <div className="flex items-center justify-between mb-2">
                         <Badge variant="secondary" className="text-xs">
-                          <IconComponent className="h-3 w-3 mr-1" />
+                          {/* <IconComponent className="h-3 w-3 mr-1" /> */}
                           {product.category}
                         </Badge>
-                        <div className="flex items-center">
-                          <Star className="h-4 w-4 text-yellow-400 fill-current" />
-                          <span className="text-sm text-gray-600 ml-1">{product.rating}</span>
-                          <span className="text-xs text-gray-400 ml-1">({product.reviews})</span>
-                        </div>
                       </div>
-                      <CardTitle className="text-lg hover:text-blue-600 transition-colors">{product.name}</CardTitle>
+                      <CardTitle className="text-lg hover:text-blue-600 transition-colors">
+                        {product.name}
+                      </CardTitle>
                     </CardHeader>
 
                     <CardContent>
                       <div className="flex flex-wrap gap-1 mb-4">
                         {product.features.map((feature, index) => (
-                          <Badge key={index} variant="outline" className="text-xs">
+                          <Badge
+                            key={index}
+                            variant="outline"
+                            className="text-xs"
+                          >
                             {feature}
                           </Badge>
                         ))}
                       </div>
 
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center space-x-2">
-                          <span className="text-2xl font-bold text-gray-900">{product.price}</span>
-                          {product.originalPrice && (
-                            <span className="text-sm text-gray-500 line-through">{product.originalPrice}</span>
-                          )}
-                        </div>
-                      </div>
-
-                      <Button className="w-full bg-blue-600 text-white hover:bg-blue-700" disabled={!product.inStock}>
+                      <Button className="w-full bg-blue-600 text-white hover:bg-blue-700">
                         <MessageCircle className="h-4 w-4 mr-2" />
-                        {product.inStock ? "WhatsApp Us" : "Out of Stock"}
+                         <a href="https://wa.me/+2348038417214">WhatsApp Us</a>
                       </Button>
                     </CardContent>
                   </Card>
                 </motion.div>
-              )
+              );
             })}
           </div>
         </div>
@@ -244,7 +274,9 @@ export default function ProductsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">Special Offers</h2>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+              Special Offers
+            </h2>
             <p className="text-lg text-blue-100 max-w-3xl mx-auto">
               Limited time deals on popular computer accessories and components.
             </p>
@@ -253,8 +285,12 @@ export default function ProductsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <Card className="bg-cyan-500 text-white border-0">
               <CardHeader>
-                <Badge className="w-fit bg-white/20 text-white border-white/30">Limited Time</Badge>
-                <CardTitle className="text-2xl text-white">Gaming Bundle Deal</CardTitle>
+                <Badge className="w-fit bg-white/20 text-white border-white/30">
+                  Limited Time
+                </Badge>
+                <CardTitle className="text-2xl text-white">
+                  Gaming Bundle Deal
+                </CardTitle>
                 <CardDescription className="text-cyan-100">
                   Get a gaming keyboard, mouse, and headset together
                 </CardDescription>
@@ -262,17 +298,25 @@ export default function ProductsPage() {
               <CardContent>
                 <div className="flex items-center space-x-4 mb-4">
                   <span className="text-3xl font-bold">₦199,000</span>
-                  <span className="text-lg line-through text-cyan-200">₦299,000</span>
+                  <span className="text-lg line-through text-cyan-200">
+                    ₦299,000
+                  </span>
                   <Badge className="bg-red-500">Save ₦100,000</Badge>
                 </div>
-                <Button className="w-full bg-white text-cyan-600 hover:bg-gray-100">Shop Bundle</Button>
+                <Button className="w-full bg-white text-cyan-600 hover:bg-gray-100">
+                  Shop Bundle
+                </Button>
               </CardContent>
             </Card>
 
             <Card className="bg-purple-500 text-white border-0">
               <CardHeader>
-                <Badge className="w-fit bg-white/20 text-white border-white/30">Best Seller</Badge>
-                <CardTitle className="text-2xl text-white">Upgrade Kit</CardTitle>
+                <Badge className="w-fit bg-white/20 text-white border-white/30">
+                  Best Seller
+                </Badge>
+                <CardTitle className="text-2xl text-white">
+                  Upgrade Kit
+                </CardTitle>
                 <CardDescription className="text-purple-100">
                   SSD + RAM upgrade kit for better performance
                 </CardDescription>
@@ -280,10 +324,14 @@ export default function ProductsPage() {
               <CardContent>
                 <div className="flex items-center space-x-4 mb-4">
                   <span className="text-3xl font-bold">₦179,000</span>
-                  <span className="text-lg line-through text-purple-200">₦229,000</span>
+                  <span className="text-lg line-through text-purple-200">
+                    ₦229,000
+                  </span>
                   <Badge className="bg-red-500">Save ₦50,000</Badge>
                 </div>
-                <Button className="w-full bg-white text-purple-600 hover:bg-gray-100">Shop Kit</Button>
+                <Button className="w-full bg-white text-purple-600 hover:bg-gray-100">
+                  Shop Kit
+                </Button>
               </CardContent>
             </Card>
           </div>
@@ -299,9 +347,12 @@ export default function ProductsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Why Shop With Us?</h2>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              Why Shop With Us?
+            </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              We're committed to providing the best products and service for all your computer needs.
+              We're committed to providing the best products and service for all
+              your computer needs.
             </p>
           </motion.div>
 
@@ -346,7 +397,9 @@ export default function ProductsPage() {
                 >
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{feature.title}</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  {feature.title}
+                </h3>
                 <p className="text-gray-600">{feature.description}</p>
               </motion.div>
             ))}
@@ -357,13 +410,23 @@ export default function ProductsPage() {
       {/* CTA Section */}
       <section className="py-20 bg-slate-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">Need Help Choosing?</h2>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+              Need Help Choosing?
+            </h2>
             <p className="text-lg sm:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Our experts can help you find the perfect accessories for your computer setup.
+              Our experts can help you find the perfect accessories for your
+              computer setup.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-base px-8 bg-cyan-500 hover:bg-cyan-600 text-white">
+              <Button
+                size="lg"
+                className="text-base px-8 bg-cyan-500 hover:bg-cyan-600 text-white"
+              >
                 Get Expert Advice
               </Button>
               <Button
@@ -378,5 +441,5 @@ export default function ProductsPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }

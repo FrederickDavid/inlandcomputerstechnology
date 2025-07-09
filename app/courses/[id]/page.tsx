@@ -14,58 +14,61 @@ import {
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import data from "../../data.json"
 
 export default function CourseDetailPage() {
   const params = useParams();
-  const courseId = params.id;
+  const courseId = parseInt(params.id as string);
 
+  const courseDetail = data.courses.find((el) => el.id == courseId);
+  console.log(courseDetail);
   // Mock course data - in real app, fetch based on courseId
-  const course= {
-    id: 3,
-    title: "Programming",
-    description:
-      "Learn to code with modern programming languages and frameworks that power today’s web and mobile applications. Master essential skills in HTML, CSS, JavaScript, and React while gaining hands-on experience building real-world projects. Whether you're starting from scratch or upskilling, this course equips you with practical tools and current industry standards needed to thrive in today’s fast-moving tech landscape. You'll also develop problem-solving techniques and learn how to collaborate using version control systems like Git. Stay ahead with the latest trends in frontend development, responsive design, and component-based architectures.",
-    price: "Starting Price: ₦89,000",
-    level: "Advance",
-    duration: "6-12 Months",
-    color: "#3B82F6",
-    features: ["Certificate of completion"],
-    learningOutcomes: [
-      "Understand the structure of web pages using HTML5",
-      "Create headings, paragraphs, lists, forms, tables, and semantic tags",
-      "Learn best practices for clean, accessible markup",
-      "Embed images, videos, and iframes",
-      "Build the foundation of every web page",
+  // const course = {
+  //   id: 3,
+  //   title: "Programming",
+  //   description:
+  //     "Learn to code with modern programming languages and frameworks that power today’s web and mobile applications. Master essential skills in HTML, CSS, JavaScript, and React while gaining hands-on experience building real-world projects. Whether you're starting from scratch or upskilling, this course equips you with practical tools and current industry standards needed to thrive in today’s fast-moving tech landscape. You'll also develop problem-solving techniques and learn how to collaborate using version control systems like Git. Stay ahead with the latest trends in frontend development, responsive design, and component-based architectures.",
+  //   price: "Starting Price: ₦89,000",
+  //   level: "Advance",
+  //   duration: "6-12 Months",
+  //   color: "#3B82F6",
+  //   features: ["Certificate of completion"],
+  //   learningOutcomes: [
+  //     "Understand the structure of web pages using HTML5",
+  //     "Create headings, paragraphs, lists, forms, tables, and semantic tags",
+  //     "Learn best practices for clean, accessible markup",
+  //     "Embed images, videos, and iframes",
+  //     "Build the foundation of every web page",
 
-      "Style web pages with colors, layouts, fonts, and animations using CSS",
-      "Master Flexbox and Grid for responsive design",
-      "Create interactive effects with transitions and hover states",
-      "Organize styles using classes, IDs, and pseudo-selectors",
-      "Learn media queries for mobile-first development",
+  //     "Style web pages with colors, layouts, fonts, and animations using CSS",
+  //     "Master Flexbox and Grid for responsive design",
+  //     "Create interactive effects with transitions and hover states",
+  //     "Organize styles using classes, IDs, and pseudo-selectors",
+  //     "Learn media queries for mobile-first development",
 
-      "Add interactivity and logic to web pages using JavaScript",
-      "Understand variables, data types, loops, functions, and events",
-      "Manipulate the DOM to create dynamic pages",
-      "Use Fetch API to load and send data",
-      "Learn debugging techniques and JS best practices",
+  //     "Add interactivity and logic to web pages using JavaScript",
+  //     "Understand variables, data types, loops, functions, and events",
+  //     "Manipulate the DOM to create dynamic pages",
+  //     "Use Fetch API to load and send data",
+  //     "Learn debugging techniques and JS best practices",
 
-      "Build dynamic, reusable components with React",
-      "Understand JSX, state, props, and component lifecycles",
-      "Manage application state using hooks like useState and useEffect",
-      "Route pages with React Router",
-      "Build single-page applications (SPAs)",
-      "Integrate APIs and handle async data",
+  //     "Build dynamic, reusable components with React",
+  //     "Understand JSX, state, props, and component lifecycles",
+  //     "Manage application state using hooks like useState and useEffect",
+  //     "Route pages with React Router",
+  //     "Build single-page applications (SPAs)",
+  //     "Integrate APIs and handle async data",
 
-      "Develop real web apps like portfolios, dashboards, and blogs",
-      "Use version control with Git & GitHub",
-      "Deploy projects online using Netlify or Vercel",
-      "Practice problem-solving and responsive design",
+  //     "Develop real web apps like portfolios, dashboards, and blogs",
+  //     "Use version control with Git & GitHub",
+  //     "Deploy projects online using Netlify or Vercel",
+  //     "Practice problem-solving and responsive design",
 
-      "Build and deploy complete frontend web applications",
-      "Create modern, mobile-friendly websites",
-      "Build a portfolio of projects showcasing frontend development skills",
-    ],
-  };
+  //     "Build and deploy complete frontend web applications",
+  //     "Create modern, mobile-friendly websites",
+  //     "Build a portfolio of projects showcasing frontend development skills",
+  //   ],
+  // };
 
   return (
     <div className="min-h-screen">
@@ -86,20 +89,23 @@ export default function CourseDetailPage() {
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="lg:col-span-2">
-                <Badge className="mb-4 bg-purple-500 text-white">
-                  {course.level}
+                <Badge
+                  className="mb-4 text-white"
+                  style={{ backgroundColor: courseDetail?.color }}
+                >
+                  {courseDetail?.level}
                 </Badge>
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                  {course.title}
+                  {courseDetail?.title}
                 </h1>
                 <div className="flex flex-wrap items-center gap-4 sm:gap-6 mb-6 text-gray-600">
                   <span className="flex items-center">
                     <Clock className="w-4 h-4 mr-1" />
-                    {course.duration}
+                    {courseDetail?.duration}
                   </span>
                 </div>
                 <p className="text-lg text-gray-600 mb-8">
-                  {course.description}
+                  {courseDetail?.description2}
                 </p>
               </div>
 
@@ -107,11 +113,15 @@ export default function CourseDetailPage() {
               <div className="lg:col-span-1">
                 <Card className="sticky top-8 shadow-xl">
                   <CardHeader className="text-center">
-                    <div className="text-3xl font-bold text-purple-600 mb-2">
-                      {course.price}
+                    <div
+                      className="text-3xl font-bold mb-2"
+                      style={{ color: courseDetail?.color }}
+                    >
+                      {courseDetail?.price}
                     </div>
                     <Button
                       size="lg"
+                      style={{ backgroundColor: courseDetail?.color }}
                       className="w-full bg-purple-600 text-white mb-4"
                     >
                       <MessageCircle className="w-4 h-4 mr-2" />
@@ -120,7 +130,7 @@ export default function CourseDetailPage() {
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-3">
-                      {course.features.map((feature, index) => (
+                      {courseDetail?.features.map((feature, index) => (
                         <div key={index} className="flex items-center text-sm">
                           <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
                           {feature}
@@ -147,7 +157,7 @@ export default function CourseDetailPage() {
               What You'll Learn
             </h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
-              {course.learningOutcomes.map((outcome, index) => (
+              {courseDetail?.learningOutcomes.map((outcome, index) => (
                 <motion.div
                   key={index}
                   className="flex items-start space-x-3"
@@ -166,7 +176,10 @@ export default function CourseDetailPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-purple-600">
+      <section
+        className="py-20"
+        style={{ backgroundColor: courseDetail?.color }}
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -182,7 +195,8 @@ export default function CourseDetailPage() {
             </p>
             <Button
               size="lg"
-              className="bg-white text-purple-600 hover:bg-gray-100"
+              style={{ color: courseDetail?.color }}
+              className="bg-white hover:bg-gray-100"
             >
               <MessageCircle className="w-4 h-4 mr-2" />
               Enroll Now via WhatsApp

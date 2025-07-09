@@ -1,5 +1,5 @@
 {
-  "course": [
+  "courses": [
     {
       "id": 1,
       "title": "Internet Training",
@@ -287,11 +287,117 @@
   "products": [
     {
       "id": 1,
-      "title": "Gaming Mechanical Keyboard",
-      "price": "₦129,000",
-      "originalPrice": "₦159,000",
-      "image": "/placeholder.svg?height=200&width=200",
-      "color": "#3B82F6"
+      "name": "Keyboard",
+      "description": "Tactile keys with RGB lighting for a premium typing experience.",
+      "image": "https://res.cloudinary.com/muomaifefrederickdavid/image/upload/v1752071329/inlandProductImages/keyboard_ontrx7.png",
+      "category": "Keyboards",
+      "features": ["RGB Backlit", "Wireless", "USB"]
+    },
+    {
+      "id": 2,
+      "name": "Mouse",
+      "description": "Ergonomic wireless mouse with adjustable DPI and silent clicks.",
+      "image": "https://res.cloudinary.com/muomaifefrederickdavid/image/upload/v1752069848/inlandProductImages/mouse_bgvtg0.png",
+      "category": "Mouses",
+      "features": [
+        "Wireless",
+        "Adjustable DPI",
+        "Silent Clicks",
+        "Rechargeable",
+        "USB"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "USB 3.0 Flash Drive",
+      "description": "High-speed storage in a compact and durable metal body.",
+      "image": "https://res.cloudinary.com/muomaifefrederickdavid/image/upload/v1752069848/inlandProductImages/flash_ijp0uj.png",
+      "category": "Flash Drives",
+      "features": ["USB 3.0", "Plug and Play"]
+    },
+    {
+      "id": 4,
+      "name": "Standard Power Cable",
+      "description": "Durable 3-prong power cable for PCs and monitors.",
+      "image": "https://res.cloudinary.com/muomaifefrederickdavid/image/upload/v1752070686/inlandProductImages/power%20cable.png",
+      "category": "Power Cables",
+      "features": ["1.5m Length", "3-Prong", "Heavy-Duty", "Universal Fit"]
+    },
+    {
+      "id": 5,
+      "name": "Ethernet Cable",
+      "description": "High-speed networking cable for stable and fast connections.",
+      "image": "https://res.cloudinary.com/muomaifefrederickdavid/image/upload/v1752070687/inlandProductImages/network%20cable.png",
+      "category": "Networking Cables",
+      "features": ["CAT6", "CAT5", "CAT4"]
+    },
+    {
+      "id": 6,
+      "name": "Laptop",
+      "description": "Compact and powerful laptops with long battery life.",
+      "image": "https://res.cloudinary.com/muomaifefrederickdavid/image/upload/v1752069848/inlandProductImages/laptop_jgm51z.png",
+      "category": "Laptops",
+      "features": ["HP", "DELL", "MAC Book", "ETC."]
+    },
+    {
+      "id": 7,
+      "name": "Desktop",
+      "description": "Powerful desktop for multitasking and productivity tasks.",
+      "image": "https://res.cloudinary.com/muomaifefrederickdavid/image/upload/v1752070686/inlandProductImages/desktops.png",
+      "category": "Desktops",
+      "features": ["HP", "DELL", "ETC."]
+    },
+    {
+      "id": 8,
+      "name": "Laptop Charger",
+      "description": "Universal 65W charger compatible with most laptops.",
+      "image": "https://res.cloudinary.com/muomaifefrederickdavid/image/upload/v1752069848/inlandProductImages/charger_rjkrjo.png",
+      "category": "Laptop Chargers",
+      "features": [
+        "Overvoltage Protection",
+        "Detachable Cable",
+        "Fast Charging"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "OS Installation Software",
+      "description": "Bootable USB for installing latest Windows or Linux OS.",
+      "image": "https://res.cloudinary.com/muomaifefrederickdavid/image/upload/v1752070686/inlandProductImages/softwares.png",
+      "category": "Installation Softwares",
+      "features": ["Bootable", "Latest OS", "Plug and Play", "Re-usable"]
+    },
+    {
+      "id": 10,
+      "name": "Internal Hard Drive",
+      "description": "Reliable SSD and HDD for desktop or external use.",
+      "image": "https://res.cloudinary.com/muomaifefrederickdavid/image/upload/v1752071329/inlandProductImages/internal_hard_drive_vwpdj0.png",
+      "category": "Hard Drives",
+      "features": ["SSD", "SATA III", "HDD"]
+    },
+    {
+      "id": 11,
+      "name": "External Hard Drive",
+      "description": "Reliable SSD and HDD for desktop or external use.",
+      "image": "https://res.cloudinary.com/muomaifefrederickdavid/image/upload/v1752069848/inlandProductImages/external_hard_drvie_hgupbz.png",
+      "category": "Hard Drives",
+      "features": ["SSD", "SATA III", "HDD"]
+    },
+    {
+      "id": 12,
+      "name": "RAM",
+      "description": "High-speed memory module for laptops and desktops.",
+      "image": "https://res.cloudinary.com/muomaifefrederickdavid/image/upload/v1752069849/inlandProductImages/ram_tiy3jk.png",
+      "category": "RAM",
+      "features": ["DDR4", "DDR3", "DDR2"]
+    },
+    {
+      "id": 13,
+      "name": "Processor",
+      "description": "Fast and efficient CPU for multitasking.",
+      "image": "https://res.cloudinary.com/muomaifefrederickdavid/image/upload/v1752069848/inlandProductImages/processsor_dxgzcm.png",
+      "category": "Processors",
+      "features": ["Intel", "AMD", "Celerion", "Pentium"]
     }
   ]
 }
