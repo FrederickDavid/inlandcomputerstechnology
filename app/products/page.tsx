@@ -40,88 +40,6 @@ export default function ProductsPage() {
 
   console.log(data.products);
 
-  const products = [
-    {
-      id: 1,
-      name: "Keyboard",
-      description: "",
-      image: "/placeholder.svg?height=300&width=300",
-      category: "Keyboards",
-      icon: Keyboard,
-      features: ["RGB Backlit", "Cherry MX Switches", "Anti-Ghosting", "USB-C"],
-    },
-    {
-      id: 2,
-      name: "Wireless Gaming Mouse",
-      price: "₦79,000",
-      originalPrice: "₦99,000",
-      rating: 4.7,
-      reviews: 189,
-      image: "/placeholder.svg?height=300&width=300",
-      category: "Mice",
-      icon: Mouse,
-      features: ["12000 DPI", "Wireless", "RGB Lighting", "Ergonomic"],
-      inStock: true,
-      badge: "Best Seller",
-    },
-    {
-      id: 3,
-      name: '4K Gaming Monitor 27"',
-      price: "₦399,000",
-      originalPrice: "₦499,000",
-      rating: 4.9,
-      reviews: 156,
-      image: "/placeholder.svg?height=300&width=300",
-      category: "Monitors",
-      icon: Monitor,
-      features: ["4K UHD", "144Hz", "HDR10", "USB-C Hub"],
-      inStock: true,
-      badge: "Best Seller",
-    },
-    {
-      id: 4,
-      name: "1TB NVMe SSD",
-      price: "₦89,000",
-      originalPrice: "₦119,000",
-      rating: 4.6,
-      reviews: 312,
-      image: "/placeholder.svg?height=300&width=300",
-      category: "Storage",
-      icon: HardDrive,
-      features: ["PCIe 4.0", "3500 MB/s", "5-Year Warranty", "Heat Spreader"],
-      inStock: true,
-      badge: "Best Seller",
-    },
-    {
-      id: 5,
-      name: "32GB DDR4 RAM Kit",
-      price: "₦149,000",
-      originalPrice: "₦199,000",
-      rating: 4.8,
-      reviews: 98,
-      image: "/placeholder.svg?height=300&width=300",
-      category: "Memory",
-      icon: MemoryStick,
-      features: ["3200MHz", "RGB Lighting", "Low Latency", "Dual Channel"],
-      inStock: false,
-      badge: "Out of Stock",
-    },
-    {
-      id: 6,
-      name: "AMD Ryzen 7 Processor",
-      price: "₦299,000",
-      originalPrice: "₦349,000",
-      rating: 4.9,
-      reviews: 203,
-      image: "/placeholder.svg?height=300&width=300",
-      category: "Processors",
-      icon: Cpu,
-      features: ["8 Cores", "16 Threads", "4.4GHz Boost", "AM4 Socket"],
-      inStock: true,
-      badge: "Best Seller",
-    },
-  ];
-
   const filteredProducts =
     selectedCategory === "All Products"
       ? data.products
@@ -265,79 +183,6 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* Special Offers */}
-      <section className="py-20 bg-blue-600">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-              Special Offers
-            </h2>
-            <p className="text-lg text-blue-100 max-w-3xl mx-auto">
-              Limited time deals on popular computer accessories and components.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="bg-cyan-500 text-white border-0">
-              <CardHeader>
-                <Badge className="w-fit bg-white/20 text-white border-white/30">
-                  Limited Time
-                </Badge>
-                <CardTitle className="text-2xl text-white">
-                  Gaming Bundle Deal
-                </CardTitle>
-                <CardDescription className="text-cyan-100">
-                  Get a gaming keyboard, mouse, and headset together
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center space-x-4 mb-4">
-                  <span className="text-3xl font-bold">₦199,000</span>
-                  <span className="text-lg line-through text-cyan-200">
-                    ₦299,000
-                  </span>
-                  <Badge className="bg-red-500">Save ₦100,000</Badge>
-                </div>
-                <Button className="w-full bg-white text-cyan-600 hover:bg-gray-100">
-                  Shop Bundle
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-purple-500 text-white border-0">
-              <CardHeader>
-                <Badge className="w-fit bg-white/20 text-white border-white/30">
-                  Best Seller
-                </Badge>
-                <CardTitle className="text-2xl text-white">
-                  Upgrade Kit
-                </CardTitle>
-                <CardDescription className="text-purple-100">
-                  SSD + RAM upgrade kit for better performance
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center space-x-4 mb-4">
-                  <span className="text-3xl font-bold">₦179,000</span>
-                  <span className="text-lg line-through text-purple-200">
-                    ₦229,000
-                  </span>
-                  <Badge className="bg-red-500">Save ₦50,000</Badge>
-                </div>
-                <Button className="w-full bg-white text-purple-600 hover:bg-gray-100">
-                  Shop Kit
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
       {/* Why Shop With Us */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -360,8 +205,8 @@ export default function ProductsPage() {
             {[
               {
                 icon: "🚚",
-                title: "Free Shipping",
-                description: "Free shipping on orders over ₦50,000",
+                title: "Discounted Delivery",
+                description: "Discounted Delivery on orders over ₦150,000",
                 color: "#3B82F6",
               },
               {

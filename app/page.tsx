@@ -91,39 +91,6 @@ export default function HomePage() {
     },
   ];
 
-  const courses = [
-    {
-      id: 1,
-      title: "Desktop Publishing",
-      description: "Master professional document design and layout techniques",
-      price: "Starting Price: ₦20,000",
-      level: "Beginner",
-      duration: "2-3 Months",
-      color: "#10B981",
-      icon: "📊",
-    },
-    {
-      id: 2,
-      title: "Graphics Design",
-      description: "Create stunning visual designs for digital and print media",
-      price: "Starting Price: ₦60,000",
-      level: "Intermediate",
-      duration: "3-4 Months",
-      color: "#8B5CF6",
-      icon: "🤖",
-    },
-    {
-      id: 3,
-      title: "Programming",
-      description:
-        "Learn to code with modern programming languages and frameworks",
-      price: "Starting Price: ₦89,000",
-      level: "Advance",
-      duration: "6-12 Months",
-      color: "#3B82F6",
-      icon: "💻",
-    },
-  ];
 
   return (
     <div className="min-h-screen">
@@ -248,14 +215,14 @@ export default function HomePage() {
                 transition={{ delay: 1 }}
               >
                 <div className="flex items-center space-x-2">
-                  <div className="flex -space-x-2">
+                  {/* <div className="flex -space-x-2">
                     {[1, 2, 3].map((i) => (
                       <div
                         key={i}
                         className="w-8 h-8 rounded-full border-2 border-white bg-blue-500"
                       />
                     ))}
-                  </div>
+                  </div> */}
                   <span className="text-sm text-gray-600">5000+ Repairs</span>
                 </div>
                 <div className="flex items-center space-x-1">
